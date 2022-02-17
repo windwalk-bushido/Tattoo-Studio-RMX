@@ -22,8 +22,14 @@ export default {
   <div class="rounded-3xl p-4">
     <Carousel :autoplay="slide_speed" :transition="1500" :wrapAround="true" :mouseDrag="false" :snapAlign="'center'">
       <Slide v-for="tattoo in tattoos" :key="tattoo">
-        <img :src="tattoo" alt="Image of the tattoo." class="w-full rounded-3xl" />
+        <img :src="tattoo" alt="Image of the tattoo." class="w-full image-height rounded-3xl" />
       </Slide>
     </Carousel>
   </div>
 </template>
+
+<style scoped>
+.image-height {
+  height: 800px;
+}
+</style>

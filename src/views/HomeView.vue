@@ -98,7 +98,7 @@ export default {
 </script>
 
 <template>
-  <div class="bg-black">
+  <div class="">
     <NavV />
     <div class="ml-16 p-4">
       <div class="flex flex-wrap flex-row justify-center items-center w-full rounded-3xl">
