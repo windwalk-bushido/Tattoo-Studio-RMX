@@ -1,12 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Parisienne&display=swap");
 
 html {
-	font-size: 16px;
-	font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
 }
 
 ::selection {
-	color: #ffffff;
-	background-color: #1d4ed8;
+  color: #ffffff;
+  background-color: rgb(21 128 61);
 }
-
