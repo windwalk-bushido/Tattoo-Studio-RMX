@@ -100,21 +100,21 @@ export default {
 <template>
   <div class="">
     <NavV />
-    <div class="ml-16 p-4">
+    <div class="pb-14 p-2 lg:ml-16 lg:p-4">
       <div class="flex flex-wrap flex-row justify-center items-center w-full rounded-3xl">
         <a href="#landscapes" class="hidden w-0 h-0"></a>
         <CarouselV class="w-full" :tattoos="landscape_images" :slide_speed="3300" />
       </div>
       <div class="flex flex-wrap flex-row justify-center items-center w-full rounded-3xl">
         <a href="#squares" class="hidden w-0 h-0"></a>
-        <CarouselV class="w-1/2" :tattoos="square_images" :slide_speed="4500" />
-        <CarouselV class="w-1/2" :tattoos="square_images_odd" :slide_speed="6600" />
+        <CarouselV class="w-full lg:w-1/2" :tattoos="square_images" :slide_speed="4500" />
+        <CarouselV class="w-full lg:w-1/2" :tattoos="square_images_odd" :slide_speed="6600" />
       </div>
       <div class="flex flex-wrap flex-row justify-center items-center w-full rounded-3xl">
         <a href="#portraits" class="hidden w-0 h-0"></a>
-        <CarouselV class="w-1/3" :tattoos="portrait_images_1" :slide_speed="7100" />
-        <CarouselV class="w-1/3" :tattoos="portrait_images_2" :slide_speed="5400" />
-        <CarouselV class="w-1/3" :tattoos="portrait_images_3" :slide_speed="2200" />
+        <CarouselV class="w-full lg:w-1/3" :tattoos="portrait_images_1" :slide_speed="7100" />
+        <CarouselV class="w-full lg:w-1/3" :tattoos="portrait_images_2" :slide_speed="5400" />
+        <CarouselV class="w-full lg:w-1/3" :tattoos="portrait_images_3" :slide_speed="2200" />
       </div>
     </div>
   </div>

@@ -19,17 +19,19 @@ export default {
 </script>
 
 <template>
-  <div class="rounded-3xl p-4">
+  <div class="rounded-3xl p-2 lg:p-4">
     <Carousel :autoplay="slide_speed" :transition="1500" :wrapAround="true" :mouseDrag="false" :snapAlign="'center'">
       <Slide v-for="tattoo in tattoos" :key="tattoo">
-        <img :src="tattoo" alt="Image of the tattoo." class="w-full image-height rounded-3xl" />
+        <img :src="tattoo" alt="Image of the tattoo." class="w-full h-auto image-height rounded-3xl" />
       </Slide>
     </Carousel>
   </div>
 </template>
 
 <style scoped>
-.image-height {
-  height: 800px;
+@media only screen and (min-width: 1024px) {
+  .image-height {
+    height: 50rem;
+  }
 }
 </style>
