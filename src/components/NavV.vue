@@ -18,10 +18,10 @@ export default {
 
 <template>
   <div
-    class="w-full rounded-tl-3xl rounded-tr-3xl group flex flex-col justify-between lg:w-16 lg:h-screen lg:rounded-tr-3xl lg:rounded-br-3xl z-10 fixed transition-all duration-400 ease-out lg:hover:w-96 bg-gray-800 text-white"
+    class="w-full rounded-tl-3xl rounded-tr-3xl group flex flex-col justify-between lg:w-16 lg:h-screen lg:rounded-tr-3xl lg:rounded-br-3xl z-10 fixed transition-all duration-150 ease-out lg:hover:w-96 bg-gray-800 text-white"
     :class="menu_opened ? 'w-screen h-screen' : 'h-12 bottom-0'"
   >
-    <button class="w-full mt-2 opacity-60 text-xl text-green-300 lg:hidden" @click="ChangeMenuState()">
+    <button class="w-full mt-2 opacity-60 text-2xl text-green-300 lg:hidden" @click="ChangeMenuState()">
       <FAIcon :icon="['fas', 'angles-up']" v-if="menu_opened == false" />
       <FAIcon :icon="['fas', 'angles-down']" v-else />
     </button>
@@ -31,9 +31,9 @@ export default {
       :class="menu_opened ? 'flex w-full p-4' : 'hidden'"
     >
       <a href="/">
-        <img src="../assets/logo.jpg" class="w-full h-full rounded-full shadow-lg" />
+        <img src="../assets/logo.jpg" class="w-full h-full rounded-full shadow-lg lg:p-2" />
       </a>
-      <h3 class="mt-4 hidden group-hover:inline">Vanilla Studio</h3>
+      <h3 class="mt-4 hidden group-hover:inline">Tattoo Studio Miloš</h3>
     </div>
 
     <FAIcon :icon="['fas', 'quote-right']" class="hidden lg:inline text-3xl group-hover:hidden text-green-400" />
@@ -50,13 +50,22 @@ export default {
         <p>Let's do some cool tattoo!</p>
         <p>Schedule the visit via:</p>
       </div>
-      <a href="#" class="m-4 text-3xl transition-all ease-in duration-150 text-green-500 hover:text-green-200">
+      <a
+        href="https://www.facebook.com/milos.cvetkovic.12935"
+        class="m-4 text-3xl transition-all ease-in duration-150 text-green-500 hover:text-green-200"
+      >
         <FAIcon :icon="['fab', 'facebook']" />
       </a>
-      <a href="#" class="m-4 text-3xl transition-all ease-in duration-150 text-green-500 hover:text-green-200">
+      <a
+        href="https://www.instagram.com/milos__tattoo/"
+        class="m-4 text-3xl transition-all ease-in duration-150 text-green-500 hover:text-green-200"
+      >
         <FAIcon :icon="['fab', 'instagram']" />
       </a>
-      <a href="#" class="m-4 text-3xl transition-all ease-in duration-150 text-green-500 hover:text-green-200">
+      <a
+        href="mailto:melkior0103@gmail.com"
+        class="m-4 text-3xl transition-all ease-in duration-150 text-green-500 hover:text-green-200"
+      >
         <FAIcon :icon="['fas', 'envelope']" />
       </a>
     </div>
