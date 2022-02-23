@@ -18,10 +18,10 @@ export default {
 
 <template>
   <div
-    class="w-full rounded-tl-3xl rounded-tr-3xl group flex flex-col justify-between lg:w-16 lg:h-screen lg:rounded-tr-3xl lg:rounded-br-3xl z-10 fixed transition-all duration-150 ease-out lg:hover:w-96 bg-gray-800 text-white"
+    class="w-full rounded-tl-3xl rounded-tr-3xl group flex flex-col justify-between lg:w-16 lg:h-screen lg:rounded-tr-3xl lg:rounded-br-3xl z-10 fixed transition-all duration-150 ease-out lg:hover:w-96 bg-gradient-to-b from-black to-gray-700 text-white"
     :class="menu_opened ? 'w-screen h-screen' : 'h-12 bottom-0'"
   >
-    <button class="w-full mt-2 opacity-60 text-2xl text-green-300 lg:hidden" @click="ChangeMenuState()">
+    <button class="w-full mt-2.5 text-2xl text-green-300 lg:hidden" @click="ChangeMenuState()">
       <FAIcon :icon="['fas', 'angles-up']" v-if="menu_opened == false" />
       <FAIcon :icon="['fas', 'angles-down']" v-else />
     </button>
