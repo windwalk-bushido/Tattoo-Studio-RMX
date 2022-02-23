@@ -13,13 +13,14 @@ export default {
 
   data() {
     return {
-      url: "http://127.0.0.1:5000",
+      url: "https://cutura-ink-serving.herokuapp.com/",
       landscape_images: [],
       square_images: [],
       square_images_odd: [],
       portrait_images_1: [],
       portrait_images_2: [],
       portrait_images_3: [],
+      is_api_online: false,
     };
   },
 
@@ -93,46 +94,61 @@ export default {
               x++;
             }
           }
-          console.log(temp_landscape_images);
-          console.log(temp_square_images);
-          console.log(temp_portrait_images);
+          this.is_api_online = true;
         })
         .catch((error) => {
-          console.log(error);
+          this.is_api_online = false;
         });
     },
   },
 
   mounted() {
     this.FetchImages();
-    console.log("L ->  ", this.landscape_images);
-    console.log("S ->  ", this.square_images);
-    console.log("SO -> ", this.square_images_odd);
-    console.log("P1 -> ", this.portrait_images_1);
-    console.log("P2 -> ", this.portrait_images_2);
-    console.log("P3 -> ", this.portrait_images_3);
   },
 };
 </script>
 
 <template>
   <div class="">
+    <div class="body flex justify-center items-center w-screen h-screen z-10 absolute" v-if="is_api_online == false">
+      <div
+        class="flex flex-col justify-center items-center w-80 p-4 rounded-3xl shadow-lg border-4 border-green-700 bg-gray-800"
+      >
+        <div class="w-full text-center">
+          <FAIcon :icon="['fas', 'bed']" class="text-8xl pb-8 text-green-300" id="loading_icon" />
+        </div>
+        <div class="w-full text-center text-white">
+          <p>Uh oh.</p>
+          <p>The API that fetches images has fallen asleep. Wake him up by clicking a button every couple of seconds.</p>
+          <p>It should be awake in about 30 seconds from loading the website.</p>
+          <button
+            class="mt-8 mb-8 p-4 rounded-3xl shadow-lg font-semibold transition-all duration-150 ease-in bg-green-300 text-black hover:bg-white hover:text-green-700"
+            @click="FetchImages()"
+          >
+            Wake API
+          </button>
+          <p>Thank you for your patience!</p>
+        </div>
+      </div>
+    </div>
+    <div class="hidden" v-else></div>
+
     <NavV />
     <div class="pb-14 p-2 lg:ml-16 lg:p-4">
       <div class="flex flex-wrap flex-row justify-center items-center w-full rounded-3xl">
         <a href="#landscapes" class="hidden w-0 h-0"></a>
-        <CarouselV class="w-full" :tattoos="landscape_images" :slide_speed="3300" />
+        <CarouselV class="w-full" :tattoos="landscape_images" :slide_speed="3500" />
       </div>
       <div class="flex flex-wrap flex-row justify-center items-center w-full rounded-3xl">
         <a href="#squares" class="hidden w-0 h-0"></a>
-        <CarouselV class="w-full lg:w-1/2" :tattoos="square_images" :slide_speed="4500" />
-        <CarouselV class="w-full lg:w-1/2" :tattoos="square_images_odd" :slide_speed="6600" />
+        <CarouselV class="w-full lg:w-1/2" :tattoos="square_images" :slide_speed="5000" />
+        <CarouselV class="w-full lg:w-1/2" :tattoos="square_images_odd" :slide_speed="6500" />
       </div>
       <div class="flex flex-wrap flex-row justify-center items-center w-full rounded-3xl">
         <a href="#portraits" class="hidden w-0 h-0"></a>
-        <CarouselV class="w-full lg:w-1/3" :tattoos="portrait_images_1" :slide_speed="7100" />
-        <CarouselV class="w-full lg:w-1/3" :tattoos="portrait_images_2" :slide_speed="5400" />
-        <CarouselV class="w-full lg:w-1/3" :tattoos="portrait_images_3" :slide_speed="2200" />
+        <CarouselV class="w-full lg:w-1/3" :tattoos="portrait_images_1" :slide_speed="3500" />
+        <CarouselV class="w-full lg:w-1/3" :tattoos="portrait_images_2" :slide_speed="5000" />
+        <CarouselV class="w-full lg:w-1/3" :tattoos="portrait_images_3" :slide_speed="6500" />
       </div>
     </div>
   </div>
