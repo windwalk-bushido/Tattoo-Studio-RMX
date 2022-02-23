@@ -13,7 +13,7 @@ export default {
 
   data() {
     return {
-      url: "http://localhost:1337",
+      url: "http://127.0.0.1:5000",
       landscape_images: [],
       square_images: [],
       square_images_odd: [],
@@ -25,7 +25,7 @@ export default {
 
   methods: {
     FetchImages() {
-      let url = this.url + "/tattoos";
+      let url = this.url;
       axios
         .get(url)
         .then((response) => {
@@ -34,56 +34,68 @@ export default {
           let temp_square_images = [];
           let temp_portrait_images = [];
 
-          for (let y = 0; y < 3; y++) {
-            let images = fetched_images[y.toString()];
+          for (let image_type = 0; image_type < 3; image_type++) {
+            let images = fetched_images["square"];
+            if (image_type == 1) {
+              images = fetched_images["landscape"];
+            }
+            if (image_type == 2) {
+              images = fetched_images["portrait"];
+            }
             let dont_stop_while_loop = true;
             let i = "0";
+            let t = 0;
             while (dont_stop_while_loop) {
-              if (images.Images[i] != null) {
-                if (y == 0) {
-                  temp_landscape_images[i] = this.url + images.Images[i].url;
+              if (images[i] != null) {
+                if (image_type == 0) {
+                  temp_landscape_images[t] = this.url + images[i].url;
                 }
-                if (y == 1) {
-                  temp_square_images[i] = this.url + images.Images[i].url;
+                if (image_type == 1) {
+                  temp_square_images[t] = this.url + images[i].url;
                 } else {
-                  temp_portrait_images[i] = this.url + images.Images[i].url;
+                  temp_portrait_images[t] = this.url + images[i].url;
                 }
                 i++;
+                t++;
               } else {
                 dont_stop_while_loop = false;
               }
             }
           }
-          for (let i = 0; i < temp_landscape_images.length; i++) {
-            this.landscape_images[i] = temp_landscape_images[i];
+          for (let j = 0; j < temp_landscape_images.length; j++) {
+            this.landscape_images[j] = temp_landscape_images[j];
           }
           // All tattoos that have square dimensions should be divided in 2 groups.
           let e = 0;
           let o = 0;
-          for (let i = 0; i < temp_square_images.length; i++) {
-            if (i % 2 == 0) {
-              this.square_images[e] = temp_square_images[i];
+          for (let y = 0; y < temp_square_images.length; y++) {
+            if (y % 2 == 0) {
+              this.square_images[e] = temp_square_images[y];
               e++;
             } else {
-              this.square_images_odd[o] = temp_square_images[i];
+              this.square_images_odd[o] = temp_square_images[y];
               o++;
             }
           }
           // All tattoos in portrait orientation should be divided in 3 groups.
           // First: 1st, 4th, 7th.,.. Second: 2nd, 5th, 8th... Third: 3rd, 6th, 9th...
-          for (let i = 0; i < 3; i++) {
+          for (let l = 0; l < 3; l++) {
             let x = 0;
-            for (let y = i; y < temp_portrait_images.length; y += 3) {
-              if (i == 0) {
-                this.portrait_images_1[x] = temp_portrait_images[y];
+            for (let k = l; k < temp_portrait_images.length; k += 3) {
+              if (l == 0) {
+                this.portrait_images_1[x] = temp_portrait_images[k];
               }
-              if (i == 1) {
-                this.portrait_images_2[x] = temp_portrait_images[y];
+              if (l == 1) {
+                this.portrait_images_2[x] = temp_portrait_images[k];
               } else {
-                this.portrait_images_3[x] = temp_portrait_images[y];
+                this.portrait_images_3[x] = temp_portrait_images[k];
               }
+              x++;
             }
           }
+          console.log(temp_landscape_images);
+          console.log(temp_square_images);
+          console.log(temp_portrait_images);
         })
         .catch((error) => {
           console.log(error);
@@ -93,6 +105,12 @@ export default {
 
   mounted() {
     this.FetchImages();
+    console.log("L ->  ", this.landscape_images);
+    console.log("S ->  ", this.square_images);
+    console.log("SO -> ", this.square_images_odd);
+    console.log("P1 -> ", this.portrait_images_1);
+    console.log("P2 -> ", this.portrait_images_2);
+    console.log("P3 -> ", this.portrait_images_3);
   },
 };
 </script>
