@@ -1,7 +1,0 @@
-Design it for mobile viewports.
-Change studio's name and add proper links.
-Test & optimize for performance.
-
-Add 404 view and add it to the router.
-Add humans.txt
-Add robots.txt
