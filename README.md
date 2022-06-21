@@ -1,12 +1,16 @@
 # Tattoo-Studio-RMX
 
-## A website that I made for my friend
+A website that I made for my friend
+
+## How to clone & use project
 
 Requirements:
 - Python 3 (3.6+)
 - Pip
 - Npm
 - NodeJS
+
+**Note**: commands below can be used on Linux. Not sure if it works on Mac/Windows.
 
 ## 1st terminal
 
